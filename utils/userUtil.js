@@ -1,16 +1,11 @@
 const User = require('../models/user');
 
 const isFirstMessage =async (userId) => {
-    return User.findOne({
-        where: {
-            id: userId
-        }
-    }).then((user) => {
-        if (user) {
-            return true;
-        }
-        return false;
-    });
+    const user = await User.findOne({ where: { id: userId }});
+    if(!user){
+        return true;
+    }
+    return false;
 }
 
 const createUser =async (userId) => {

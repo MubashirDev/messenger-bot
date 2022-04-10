@@ -1,6 +1,7 @@
 const { sendMessage } = require('./messageUtil');
 const { productInfo } = require('./productUtil');
 
+// to split product id from message
 const getProductId = (message) => {
     try {
         const messageSplited = message.split(" ")
@@ -12,7 +13,7 @@ const getProductId = (message) => {
     }
 
 }
-
+//get requst type from message
 const getRequestType = (message) => {
     try {
         const messageSplited = message.split(" ")
@@ -25,13 +26,13 @@ const getRequestType = (message) => {
 
 }
 
-
+//to get product info
 const handleRequest = async (sender, message) => {
     const requestList = ["desc", "price", "shipping", "buy"];
 
     let request = getRequestType(message);
     let productId = getProductId(message);
-
+//checkk if request is in request list
     if (requestList.includes(request)) {
 
         if (request === "desc") {

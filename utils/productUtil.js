@@ -1,40 +1,38 @@
 
 const products = require("../products.json")
 const { sendEmail } = require("./sendgridUtil")
-
-const getProductInfo = (productId, attribute) => {
-    const foundProduct = products.find(function (item) {
+// to get specific info for product
+const getProduct = (productId, attribute) => {
+    const product = products.find(function (item) {
         return item.sku == productId
     });
-
-    if (foundProduct === undefined)
+    if (product === undefined)
         return "product not found!"
-
-    return foundProduct[attribute]
-
+    return product[attribute]
 }
 
-const getProductAllInfo = (productId) => {
-    const foundProduct = products.find(function (item) {
+//to get full info for buy operation
+const getProductFullInfo = (productId) => {
+    const product = products.find(function (item) {
         return item.sku == productId
     });
-    if (foundProduct === undefined)
+    if (product === undefined)
         return {}
-    return foundProduct
+    return product
 }
 
-
+//get product related info
 function productInfo(productId, requestType) {
-
+    //get product info
     switch (requestType) {
         case "buy":
-            let product = getProductAllInfo(productId)
+            let product = getProductFullInfo(productId)
             if(!product["sku"])
                 return "product not found!"
                 sendEmail(product)
-            return "thank u for buy this!"
+            return "buy product"
         default:
-            return getProductInfo(productId, requestType)
+            return getProduct(productId, requestType)
 
     }
 }
