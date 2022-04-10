@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "plugins": ["sonarjs"],
+    "extends": [
+        "airbnb-base","prettier","plugin:sonarjs/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+        "import/no-dynamic-require":0,
+        "no-underscore-dangle":0,
+        "no-unused-expressions":0,
+        "no-restricted-syntax":0,
+        "no-await-in-loop":0,
+        "no-param-reassign":0,
+        "class-methods-use-this":0,
+        "sonarjs/no-duplicate-string":0,
+        "no-continue":0
+    }
+}

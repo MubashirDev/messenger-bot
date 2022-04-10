@@ -26,7 +26,7 @@ function productInfo(productId, requestType) {
     //get product info
     switch (requestType) {
         case "buy":
-            let product = getProductFullInfo(productId)
+            const product = getProductFullInfo(productId)
             if(!product["sku"])
                 return "product not found!"
                 sendEmail(product)
